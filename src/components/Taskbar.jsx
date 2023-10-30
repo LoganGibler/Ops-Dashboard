@@ -4,6 +4,7 @@ import { TbAlertTriangleFilled } from "react-icons/tb";
 import { BiGitPullRequest } from "react-icons/bi";
 import { RiContactsBookFill } from "react-icons/ri";
 import { MdFastfood, MdEditDocument } from "react-icons/md";
+import { testingProtectedRoute } from "../middleware/auth";
 
 const Taskbar = ({ isActive, activeComp, setActiveComp }) => {
   // if localstorage taskbar value = true, show full
