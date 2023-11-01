@@ -6,7 +6,7 @@ const URL = "http://localhost:8000";
 export async function testingProtectedRoute() {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
-  console.log("this is token from localstorage: ", token);
+  // console.log("this is token from localstorage: ", token);
   const response = await axios.post(
     `${URL}/protected`,
     {
@@ -14,13 +14,12 @@ export async function testingProtectedRoute() {
     },
     {
       headers: {
-        "Content-Type": "application/json",
         Authorization: `${token}`,
       },
     }
   );
 
-  console.log(response);
+  // console.log("This is response from /protected?: ", response);
   return response;
 }
 //////////////////////////////

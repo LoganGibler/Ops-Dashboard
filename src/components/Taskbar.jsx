@@ -5,8 +5,10 @@ import { BiGitPullRequest } from "react-icons/bi";
 import { RiContactsBookFill } from "react-icons/ri";
 import { MdFastfood, MdEditDocument } from "react-icons/md";
 import { testingProtectedRoute } from "../middleware/auth";
+import { useNavigate } from "react-router-dom";
 
 const Taskbar = ({ isActive, activeComp, setActiveComp }) => {
+  const navigate = useNavigate();
   // if localstorage taskbar value = true, show full
   // if false, show small bar with icons
 
@@ -14,7 +16,12 @@ const Taskbar = ({ isActive, activeComp, setActiveComp }) => {
     return (
       <aside className="flex flex-col bg-green-500 py-2 w-48 text-white absolute bottom-0 top-12 transition-all mt-2">
         {activeComp === "Ops Turnover" ? (
-          <p className=" bg-stone-50 mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:cursor-pointer text-green-500">
+          <p
+            className=" bg-stone-50 mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:cursor-pointer text-green-500"
+            onClick={() => {
+              navigate("/Turnover");
+            }}
+          >
             Ops Turnover <HiDocumentText className="ml-2 text-2xl" />
           </p>
         ) : (
@@ -22,6 +29,7 @@ const Taskbar = ({ isActive, activeComp, setActiveComp }) => {
             className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("Ops Turnover");
+              navigate("/Turnover");
             }}
           >
             Ops Turnover <HiDocumentText className="ml-2 text-2xl" />
@@ -106,7 +114,12 @@ const Taskbar = ({ isActive, activeComp, setActiveComp }) => {
     return (
       <aside className="flex flex-col bg-green-500 py-2 w-12 text-white absolute bottom-0 top-12 transition-all mt-2">
         {activeComp === "Ops Turnover" ? (
-          <p className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center bg-stone-50 hover:cursor-pointer text-green-500">
+          <p
+            className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center bg-stone-50 hover:cursor-pointer text-green-500"
+            onClick={() => {
+              navigate("/Turnover");
+            }}
+          >
             <HiDocumentText className="ml-0.5 text-2xl" />
           </p>
         ) : (
@@ -114,6 +127,7 @@ const Taskbar = ({ isActive, activeComp, setActiveComp }) => {
             className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("Ops Turnover");
+              navigate("/Turnover");
             }}
           >
             <HiDocumentText className="ml-0.5 text-2xl" />

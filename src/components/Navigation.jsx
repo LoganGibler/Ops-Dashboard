@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
-import { Taskbar } from ".";
-import logo from "/home/logan/code/Ops-Dashboard/src/imgs/dixie1.png";
+import logo from "../imgs/dixie1.png";
 
 const Navigation = ({
   isActive,

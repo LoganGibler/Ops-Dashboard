@@ -11,13 +11,16 @@ const minutes = currentDate.getMinutes().toString().padStart(2, "0");
 const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
 
 export async function getTurnover() {
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
   try {
-    const turnover = await axios.get(
+    const turnover = await axios.post(
       `${URL}/turnover`,
-      {},
+      {
+        username: username,
+      },
       {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `${token}`,
         },
       }
@@ -28,7 +31,9 @@ export async function getTurnover() {
   }
 }
 
-export async function updateTurnover(newTurnover, username) {
+export async function updateTurnover(newTurnover) {
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
   try {
     const turnover = await axios.post(
       `${URL}/updateTurnover`,
@@ -39,7 +44,6 @@ export async function updateTurnover(newTurnover, username) {
       },
       {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `${token}`,
         },
       }
