@@ -8,7 +8,7 @@ const day = currentDate.getDate().toString().padStart(2, "0");
 const hours = currentDate.getHours().toString().padStart(2, "0");
 const minutes = currentDate.getMinutes().toString().padStart(2, "0");
 
-const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}`;
 
 export async function getTurnover() {
   const token = localStorage.getItem("token");

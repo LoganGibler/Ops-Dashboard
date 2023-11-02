@@ -32,6 +32,7 @@ export default {
       width: {
         420: "420px",
         465: "465px",
+        "app":"50rem",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

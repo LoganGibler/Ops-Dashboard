@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  /* font-family: ; */
+html,
+body,
+main,
+#root {
+  height: 100%;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  background-color: rgb(250 250 249);
+  padding: 0;
 }

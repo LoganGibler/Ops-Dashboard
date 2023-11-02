@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./globals.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Navigation, Taskbar, Login, Register, Turnover } from "./components";
-
-import { testingProtectedRoute } from "../src/middleware/auth";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 const App = () => {
   const [isActive, setIsActive] = useState(false);
   const [activeComp, setActiveComp] = useState("");
   const [activeSession, setActiveSession] = useState(false);
+  const [activeUser, setActiveUser] = useState("");
 
   async function fetchLoginStatus() {
     const tokenStatus = localStorage.getItem("token");
@@ -18,18 +17,27 @@ const App = () => {
     }
   }
 
+  async function fetchUser() {
+    const activeUser = localStorage.getItem("username");
+    if (activeUser) {
+      setActiveUser(activeUser);
+    }
+  }
+
   useEffect(() => {
     fetchLoginStatus();
+    fetchUser();
   }, []);
 
   return (
-    <main className="h-screen">
+    <main>
       <BrowserRouter>
         <Navigation
           isActive={isActive}
           setIsActive={setIsActive}
           activeSession={activeSession}
           setActiveSession={setActiveSession}
+          activeUser={activeUser}
         />
         {activeSession && (
           <Taskbar
