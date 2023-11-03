@@ -138,6 +138,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
             className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex border-b-2 justify-center  hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("DailyBulletin");
+              navigate("/Bulletin");
             }}
           >
             DailyBulletin <GoChecklist className="ml-2 text-2xl" />
@@ -269,6 +270,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
             className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex border-b-2 justify-center  hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("DailyBulletin");
+              navigate("/Bulletin");
             }}
           >
             <GoChecklist className="ml-0.5 text-3xl" />

@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./globals.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { Navigation, Taskbar, Login, Register, Turnover } from "./components";
+import {
+  Navigation,
+  Taskbar,
+  Login,
+  Register,
+  Turnover,
+  Bulletin,
+} from "./components";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 const App = () => {
@@ -73,6 +80,10 @@ const App = () => {
           <Route
             path="/Turnover"
             element={<ProtectedRoute element={Turnover} />}
+          />
+          <Route
+            path="/Bulletin"
+            element={<ProtectedRoute element={Bulletin} />}
           />
         </Routes>
       </BrowserRouter>

@@ -6,7 +6,7 @@ const Navigation = ({
   setIsActive,
   activeSession,
   setActiveSession,
-  activeUser
+  activeUser,
 }) => {
   return (
     <div className="flex bg-green-500 py-3 px-10 border-b-0 h-16">
@@ -21,14 +21,12 @@ const Navigation = ({
           Ops BulletinBoard
         </h2>
       )}
-        {
-
-        }
+      {}
       <div className="flex grow justify-end">
-        <p className="text-lg text-white text-center align-middle mr-3 mt-1">
+        <p className="text-lg text-white text-center align-middle mr-3 mt-1.5">
           Username
         </p>
-        <button className="text-lg text-green-500 bg-stone-50 px-3 text-center rounded-md">
+        <button className="text-lg text-green-500 bg-stone-50 px-3 text-center font-bold rounded-md">
           Sign Out
         </button>
       </div>
