@@ -28,11 +28,12 @@ export default {
       screens: {
         xs: "480px",
         "-sm": { max: "635px" },
+        "-md": { max: "820px" },
       },
       width: {
         420: "420px",
         465: "465px",
-        "app":"50rem",
+        app: "50rem",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

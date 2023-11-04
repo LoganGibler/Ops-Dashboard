@@ -24,16 +24,14 @@ const Turnover = () => {
     async function getNewTurnoverData() {
       // grab value from textarea, pass to update turnover function
       const newData = document.getElementById("ops-edit-turnover").value;
-      console.log("this is the new data", newData);
       const updatedTurnover = await updateTurnover(newData);
-      console.log(updatedTurnover);
       if (updatedTurnover) {
         window.location.reload();
       }
     }
 
     return (
-      <div className="flex flex-col shadow-lg text-bold ml-36 mr-20 px-10 py-5 mt-10 mb-16 border-t-4border-green-500">
+      <div className="flex flex-col shadow-lg text-bold ml-[13rem] mr-[9rem] px-10 py-5 mt-10 mb-16 border-t-4 border-green-500">
         <h1 className="font-bold my-0 text-lg">Operations Turnover</h1>
         <div className="flex">
           <p className="my-3">
@@ -87,7 +85,7 @@ const Turnover = () => {
     return turnoverEditHtml;
   } else {
     return (
-      <div className="flex justify-center grow ml-20 mt-10 mb-10">
+      <div className="flex justify-center grow ml-[8rem] mt-10 mb-10 mr-[4rem]">
         {!editTurnoverActive && (
           <div className="flex flex-col shadow-lg text-bold mx-20 mb-20 px-10 py-5 border-t-4 border-green-500">
             <div>

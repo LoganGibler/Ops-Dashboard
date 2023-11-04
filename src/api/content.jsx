@@ -8,7 +8,8 @@ const month = (currentDate.getMonth() + 1).toString().padStart(2, "0"); // Month
 const day = currentDate.getDate().toString().padStart(2, "0");
 const hours = currentDate.getHours().toString().padStart(2, "0");
 const minutes = currentDate.getMinutes().toString().padStart(2, "0");
-const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}`;
+// const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}`;
+const formattedDate = `${month}-${day}-${year} ${hours}:${minutes}`;
 
 export async function getTurnover() {
   const token = localStorage.getItem("token");
@@ -91,7 +92,7 @@ export async function addNote(note) {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
   try {
-    const note = await axios.post(
+    const note1 = await axios.post(
       `${URL}/addNote`,
       {
         note: note,
@@ -104,7 +105,7 @@ export async function addNote(note) {
         },
       }
     );
-    return note;
+    return note1;
   } catch (error) {
     throw error;
   }

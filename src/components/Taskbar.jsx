@@ -66,13 +66,14 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
             className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("Common Alerts");
+              navigate("/Alerts");
             }}
           >
             Common Alerts <TbAlertTriangleFilled className="ml-2.5 text-2xl" />
           </p>
         )}
 
-        {activeComp === "Polling Request" ? (
+        {/* {activeComp === "Polling Request" ? (
           <p className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  bg-stone-50 hover:cursor-pointer text-green-500 active:bg-white">
             Polling Requests <MdFastfood className="ml-2 text-2xl" />
           </p>
@@ -85,7 +86,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
           >
             Polling Requests <MdFastfood className="ml-2 text-2xl" />
           </p>
-        )}
+        )} */}
 
         {activeComp === "Documentation" ? (
           <p className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  bg-stone-50 hover:cursor-pointer text-green-500 active:bg-white">
@@ -196,13 +197,14 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
             className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("Common Alerts");
+              navigate("/Alerts");
             }}
           >
             <TbAlertTriangleFilled className="ml-0.5 text-2xl" />
           </p>
         )}
 
-        {activeComp === "Polling Requests" ? (
+        {/* {activeComp === "Polling Requests" ? (
           <p className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  bg-stone-50 hover:cursor-pointer text-green-500 active:bg-white">
             <MdFastfood className="ml-0.5 text-2xl" />
           </p>
@@ -215,7 +217,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
           >
             <MdFastfood className="ml-0.5 text-2xl" />
           </p>
-        )}
+        )} */}
 
         {activeComp === "Documentation" ? (
           <p className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  bg-stone-50 hover:cursor-pointer text-green-500 active:bg-white">
