@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URL = "http://localhost:8000";
+// const URL = "http://localhost:8000";
+const URL = "https://ops-dashboard-node-js-api.onrender.com";
 
 // user auth middleware
 export async function testingProtectedRoute() {
