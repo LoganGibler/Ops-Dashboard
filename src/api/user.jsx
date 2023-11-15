@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URL = "http://localhost:8000";
+// const URL = "http://localhost:8000";
+const URL = "https://ops-dashboard-node-js-api.onrender.com";
 
 export async function createUser(username, password) {
   const response = await axios.post(`${URL}/register`, {
