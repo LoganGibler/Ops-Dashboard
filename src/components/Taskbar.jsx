@@ -111,6 +111,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
             className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("Contacts");
+              navigate("/Contacts");
             }}
           >
             Contacts <RiContactsBookFill className="ml-2 text-2xl" />
@@ -243,6 +244,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
             className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("Contacts");
+              navigate("/Contacts");
             }}
           >
             <RiContactsBookFill className="ml-0.5 text-2xl" />

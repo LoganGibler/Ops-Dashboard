@@ -9,6 +9,7 @@ import {
   Turnover,
   Bulletin,
   Alerts,
+  Contacts,
 } from "./components";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -87,6 +88,10 @@ const App = () => {
             element={<ProtectedRoute element={Bulletin} />}
           />
           <Route path="/Alerts" element={<ProtectedRoute element={Alerts} />} />
+          <Route
+            path="/Contacts"
+            element={<ProtectedRoute element={Contacts} />}
+          />
         </Routes>
       </BrowserRouter>
     </main>
