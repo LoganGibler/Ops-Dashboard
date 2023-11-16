@@ -19,10 +19,13 @@ const Login = ({ activeSession, setActiveSession }) => {
           // console.log("this is username", username);
 
           let token = await loginUser(username, password);
+          if (!token) {
+            alert("Login Failed.");
+            return;
+          }
           console.log(token);
           localStorage.setItem("token", JSON.stringify(token.token));
           localStorage.setItem("username", JSON.stringify(username));
-          alert("Sign up successful");
           setActiveSession(true);
           setUsername("");
           setPassword("");

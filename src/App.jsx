@@ -27,7 +27,7 @@ const App = () => {
   }
 
   async function fetchUser() {
-    const activeUser = localStorage.getItem("username");
+    const activeUser = JSON.parse(localStorage.getItem("username"));
     if (activeUser) {
       setActiveUser(activeUser);
     }
@@ -59,6 +59,7 @@ const App = () => {
 
         <Routes>
           {/* publicroutes */}
+          {activeUser && <Route path="/" element={<Login />} />}
           <Route
             path="/Login"
             element={

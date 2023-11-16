@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const URL = "http://localhost:8000";
-const URL = "https://ops-dashboard-node-js-api.onrender.com"
+const URL = "http://localhost:8000";
+// const URL = "https://ops-dashboard-node-js-api.onrender.com";
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
@@ -205,3 +205,42 @@ export async function deleteNote(noteID) {
   }
 }
 
+export async function getContacts() {
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
+  try {
+    const contacts = await axios.post(
+      `${URL}/getContacts`,
+      {
+        username: username,
+      },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    return contacts;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateContacts(newData) {
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
+  try {
+    const updatedData = await axios.post(
+      `${URL}/updateContacts`,
+      { username: username, newData: newData, date: formattedDate },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    return updatedData;
+  } catch (error) {
+    throw error;
+  }
+}

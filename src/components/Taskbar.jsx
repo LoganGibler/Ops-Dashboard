@@ -20,12 +20,12 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
         {isActive ? (
           <div className="flex">
             <RiCloseLine
-              className="hover: cursor-pointer mt-4 ml-2"
+              className="hover: cursor-pointer mt-2 ml-2"
               color="#fff"
               size={28}
               onClick={() => setIsActive(false)}
             />
-            <p className="text-center ml-3 my-4">BulletinBoard</p>
+            <p className="text-center ml-3 mt-2">BulletinBoard</p>
           </div>
         ) : (
           <RiMenu3Line
@@ -38,7 +38,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
 
         {activeComp === "Ops Turnover" ? (
           <p
-            className=" bg-stone-50 mx-0 mt-0 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:cursor-pointer text-green-500"
+            className=" bg-stone-50 mx-0 mt-3 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:cursor-pointer text-green-500"
             onClick={() => {
               navigate("/Turnover");
             }}
@@ -47,7 +47,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
           </p>
         ) : (
           <p
-            className="mx-0 mt-0 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
+            className="mx-0 mt-3 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("Ops Turnover");
               navigate("/Turnover");
@@ -151,10 +151,10 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
   } else {
     return (
       <aside className="flex flex-col bg-green-500 py-0 w-12 text-white fixed transition-all mt-0 h-full top-0">
-        <p className="text-white mb-3 mt-3 text-2xl">
+        <p className="text-white mb-3 mt-2 text-2xl">
           {isActive ? (
             <RiCloseLine
-              className="hover: cursor-pointer mt-1 ml-3"
+              className="hover: cursor-pointer mt-2 ml-3"
               color="#fff"
               size={28}
               onClick={() => setIsActive(false)}
@@ -170,7 +170,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
         </p>
         {activeComp === "Ops Turnover" ? (
           <p
-            className="mx-0 mt-1 py-4 font-medium text-md border-white border-t-2 flex justify-center bg-stone-50 hover:cursor-pointer text-green-500"
+            className="mx-0 mt-0 py-4 font-medium text-md border-white border-t-2 flex justify-center bg-stone-50 hover:cursor-pointer text-green-500"
             onClick={() => {
               navigate("/Turnover");
             }}
@@ -179,7 +179,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
           </p>
         ) : (
           <p
-            className="mx-0 mt-1 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
+            className="mx-0 mt-0 py-4 font-medium text-md border-white border-t-2 flex justify-center hover:bg-stone-50 cursor-pointer hover:text-green-500 active:bg-white"
             onClick={() => {
               setActiveComp("Ops Turnover");
               navigate("/Turnover");
