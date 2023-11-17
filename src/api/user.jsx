@@ -16,5 +16,11 @@ export async function loginUser(username, password) {
     username: username,
     password: password,
   });
+  document.cookie = `AUTH_API=${response.data.token}`;
   return response.data;
+}
+
+export async function logout() {
+  const logoutUser = await axios.post("/logout");
+  return;
 }

@@ -12,6 +12,16 @@ const minutes = currentDate.getMinutes().toString().padStart(2, "0");
 // const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}`;
 const formattedDate = `${month}-${day}-${year} ${hours}:${minutes}`;
 
+const headersTemp = document.cookie.split(";"); // <-- this get all cookies saves and splits them in the array.
+
+const finalHeaders = {};
+
+headersTemp.forEach((header) => {
+  // <-- looping on all cookies
+  const headerTemp = header.split("="); // <-- split each cookie to get key and value
+  finalHeaders[headerTemp[0].trim()] = headerTemp[1].trim(); // <-- save on object to access using keys.
+});
+
 export async function getTurnover() {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
@@ -23,7 +33,7 @@ export async function getTurnover() {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -46,7 +56,7 @@ export async function updateTurnover(newTurnover) {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -79,7 +89,7 @@ export async function getBulletin() {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -102,7 +112,7 @@ export async function addNote(note) {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -126,7 +136,7 @@ export async function updateNote(newNote, noteID) {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -149,7 +159,7 @@ export async function completeNote(noteID) {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -173,7 +183,7 @@ export async function uncompleteNote(noteID) {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -196,7 +206,7 @@ export async function deleteNote(noteID) {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -216,7 +226,7 @@ export async function getContacts() {
       },
       {
         headers: {
-          Authorization: token,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -235,11 +245,49 @@ export async function updateContacts(newData) {
       { username: username, newData: newData, date: formattedDate },
       {
         headers: {
-          Authorization: token,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
     return updatedData;
+  } catch (error) {
+    throw error;
+  }
+}
+
+// workflow api calls
+export async function getWorkflows() {
+  try {
+    const response = await axios.get(`${URL}/getWorkflows`, {
+      headers: {
+        authorization: finalHeaders["AUTH_API"],
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateWorkflows(newData) {
+  const username = JSON.parse(localStorage.getItem("username"));
+  try {
+    const response = await axios.post(
+      `${URL}/updateWorkflows`,
+      {
+        username: username,
+        date: formattedDate,
+        newData: newData,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+
+    return response.data;
   } catch (error) {
     throw error;
   }

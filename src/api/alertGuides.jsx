@@ -1,8 +1,16 @@
 import axios from "axios";
 
-
 const URL = "http://localhost:8000";
 // const URL = "https://ops-dashboard-node-js-api.onrender.com";
+const headersTemp = document.cookie.split(";"); // <-- this get all cookies saves and splits them in the array.
+
+const finalHeaders = {};
+
+headersTemp.forEach((header) => {
+  // <-- looping on all cookies
+  const headerTemp = header.split("="); // <-- split each cookie to get key and value
+  finalHeaders[headerTemp[0].trim()] = headerTemp[1].trim(); // <-- save on object to access using keys.
+});
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
@@ -13,26 +21,6 @@ const minutes = currentDate.getMinutes().toString().padStart(2, "0");
 // const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}`;
 const formattedDate = `${month}-${day}-${year} ${hours}:${minutes}`;
 
-// export async function getTurnover() {
-//   const token = localStorage.getItem("token");
-//   const username = localStorage.getItem("username");
-//   try {
-//     const turnover = await axios.post(
-//       `${URL}/turnover`,
-//       {
-//         username: username,
-//       },
-//       {
-//         headers: {
-//           Authorization: `${token}`,
-//         },
-//       }
-//     );
-//     return turnover.data;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
 export async function getGuides() {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
@@ -44,7 +32,7 @@ export async function getGuides() {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );
@@ -67,7 +55,7 @@ export async function createGuide(title) {
       },
       {
         headers: {
-          Authorization: `${token}`,
+          authorization: finalHeaders["AUTH_API"],
         },
       }
     );

@@ -10,8 +10,12 @@ import {
   Bulletin,
   Alerts,
   Contacts,
+  Workflows,
 } from "./components";
 import ProtectedRoute from "./routes/ProtectedRoute";
+// import Cookies from "universal-cookie";
+
+// const cookies = new Cookies();
 
 const App = () => {
   const [isActive, setIsActive] = useState(false);
@@ -19,17 +23,13 @@ const App = () => {
   const [activeSession, setActiveSession] = useState(false);
   const [activeUser, setActiveUser] = useState("");
 
-  async function fetchLoginStatus() {
-    const tokenStatus = localStorage.getItem("token");
-    if (tokenStatus) {
-      setActiveSession(true);
-    }
-  }
+  async function fetchLoginStatus() {}
 
   async function fetchUser() {
     const activeUser = JSON.parse(localStorage.getItem("username"));
     if (activeUser) {
       setActiveUser(activeUser);
+      setActiveSession(true);
     }
   }
 
@@ -92,6 +92,10 @@ const App = () => {
           <Route
             path="/Contacts"
             element={<ProtectedRoute element={Contacts} />}
+          />
+          <Route
+            path="/Workflows"
+            element={<ProtectedRoute element={Workflows} />}
           />
         </Routes>
       </BrowserRouter>

@@ -23,8 +23,8 @@ const Login = ({ activeSession, setActiveSession }) => {
             alert("Login Failed.");
             return;
           }
-          console.log(token);
-          localStorage.setItem("token", JSON.stringify(token.token));
+          // console.log(token);
+          // localStorage.setItem("token", JSON.stringify(token.token));
           localStorage.setItem("username", JSON.stringify(username));
           setActiveSession(true);
           setUsername("");
@@ -40,6 +40,7 @@ const Login = ({ activeSession, setActiveSession }) => {
         </div>
 
         <label className="my-1.5 px-1 text-lg">Network ID</label>
+
         <input
           className="bg-stone-50 px-1 py-1 rounded-md indent-2 border-2"
           type="text"
@@ -48,6 +49,7 @@ const Login = ({ activeSession, setActiveSession }) => {
             setUsername(e.target.value);
           }}
         />
+
         <label className="mt-2 mb-1.5 px-1 text-lg">Password</label>
         <input
           className="bg-stone-50 px-1 py-1 rounded-md indent-2 border-2"

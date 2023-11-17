@@ -6,18 +6,19 @@ import { testingProtectedRoute } from "../middleware/auth";
 function ProtectedRoute({ element: Component, ...rest }) {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 
-  useEffect(() => {
-    async function checkAuthentication() {
-      const authenticated = await testingProtectedRoute();
-      setIsAuthenticated(authenticated);
-    }
+  async function checkAuthentication() {
+    const authenticated = await testingProtectedRoute();
+    // console.log("THIS IS authenticated", authenticated);
+    setIsAuthenticated(authenticated);
+  }
 
+  useEffect(() => {
     checkAuthentication();
   }, []);
 
   if (isAuthenticated === null) {
     // Loading state, you can render a loading spinner or message here
-    return <div>Loading...</div>;
+    return <div className="flex justify-center">Bad Auth. Please log out to refresh your token.</div>;
   } else {
     return isAuthenticated ? (
       <Component {...rest} />

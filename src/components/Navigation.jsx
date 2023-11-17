@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../imgs/dixie1.png";
 import { Navigate, useNavigate } from "react-router-dom";
+import { logout } from "../api/user";
 
 const Navigation = ({
   isActive,
@@ -34,6 +35,7 @@ const Navigation = ({
               className="text-md text-green-500 bg-stone-50 px-3 text-center font-bold rounded-md"
               onClick={async () => {
                 localStorage.clear();
+                // await logout();
                 setActiveSession(false);
                 navigate("/Login");
               }}
