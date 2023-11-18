@@ -2,15 +2,15 @@ import axios from "axios";
 
 const URL = "http://localhost:8000";
 // const URL = "https://ops-dashboard-node-js-api.onrender.com";
-const headersTemp = document.cookie.split(";"); // <-- this get all cookies saves and splits them in the array.
-
+const headersTemp = document.cookie.split(";");
 const finalHeaders = {};
-
-headersTemp.forEach((header) => {
-  // <-- looping on all cookies
-  const headerTemp = header.split("="); // <-- split each cookie to get key and value
-  finalHeaders[headerTemp[0].trim()] = headerTemp[1].trim(); // <-- save on object to access using keys.
-});
+// console.log(headersTemp[0])
+if (headersTemp[0] !== "") {
+  headersTemp.forEach((header) => {
+    const headerTemp = header.split("=");
+    finalHeaders[headerTemp[0].trim()] = headerTemp[1].trim(); // save on object to access using keys.
+  });
+}
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
@@ -20,38 +20,32 @@ const hours = currentDate.getHours().toString().padStart(2, "0");
 const minutes = currentDate.getMinutes().toString().padStart(2, "0");
 // const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}`;
 const formattedDate = `${month}-${day}-${year} ${hours}:${minutes}`;
+const dayDate = `${month}-${day}-${year}`;
 
 export async function getGuides() {
-  const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
   try {
-    const guides = await axios.post(
-      `${URL}/getGuides`,
-      {
-        username: username,
+    const guides = await axios.get(`${URL}/getGuides`, {
+      headers: {
+        authorization: finalHeaders["AUTH_API"],
       },
-      {
-        headers: {
-          authorization: finalHeaders["AUTH_API"],
-        },
-      }
-    );
+    });
     return guides;
   } catch (error) {
     throw error;
   }
 }
 
-export async function createGuide(title) {
-  const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
+export async function createGuide(title, origin, description) {
+  const username = JSON.parse(localStorage.getItem("username"));
   try {
     const createdGuide = await axios.post(
       `${URL}/createGuide`,
       {
         username: username,
-        date: formattedDate,
+        origin: origin,
+        date: dayDate,
         title: title,
+        description: description,
       },
       {
         headers: {
@@ -60,6 +54,144 @@ export async function createGuide(title) {
       }
     );
     return createdGuide;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function deleteGuide(_id) {
+  try {
+    const deletedGuide = await axios.post(
+      `${URL}/deleteGuide`,
+      {
+        _id: _id,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+    return deletedGuide;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function publishGuide(_id) {
+  try {
+    const response = await axios.post(
+      `${URL}/publishGuide`,
+      {
+        _id: _id,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function unpublishGuide(_id) {
+  try {
+    const response = await axios.post(
+      `${URL}/unpublishGuide`,
+      {
+        _id: _id,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function addStep(_id, newData) {
+  try {
+    const response = await axios.post(
+      `${URL}/addstep`,
+      {
+        _id: _id,
+        step: newData,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function removeStep(_id, index) {
+  try {
+    const response = await axios.post(
+      `${URL}/removeStep`,
+      {
+        _id: _id,
+        index: index,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateStep(_id, index, newData) {
+  try {
+    const response = await axios.post(
+      `${URL}/removeStep`,
+      {
+        _id: _id,
+        index: index,
+        newStepData: newData,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getUnpublishedUserGuides() {
+  const username = JSON.parse(localStorage.getItem("username"));
+  try {
+    const response = await axios.post(
+      `${URL}/getUserGuides`,
+      {
+        username: username,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+    return response.data;
   } catch (error) {
     throw error;
   }

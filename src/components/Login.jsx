@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../imgs/dixie1.png";
 import { loginUser } from "../api/user";
 
-const Login = ({ activeSession, setActiveSession }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -26,10 +26,11 @@ const Login = ({ activeSession, setActiveSession }) => {
           // console.log(token);
           // localStorage.setItem("token", JSON.stringify(token.token));
           localStorage.setItem("username", JSON.stringify(username));
-          setActiveSession(true);
+          // setActiveSession(true);
           setUsername("");
           setPassword("");
           navigate("/Turnover");
+          window.location.reload();
         }}
       >
         <div className="flex items-center">

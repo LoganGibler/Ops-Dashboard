@@ -12,18 +12,17 @@ const minutes = currentDate.getMinutes().toString().padStart(2, "0");
 // const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}`;
 const formattedDate = `${month}-${day}-${year} ${hours}:${minutes}`;
 
-const headersTemp = document.cookie.split(";"); // <-- this get all cookies saves and splits them in the array.
-
+const headersTemp = document.cookie.split(";");
 const finalHeaders = {};
-
-headersTemp.forEach((header) => {
-  // <-- looping on all cookies
-  const headerTemp = header.split("="); // <-- split each cookie to get key and value
-  finalHeaders[headerTemp[0].trim()] = headerTemp[1].trim(); // <-- save on object to access using keys.
-});
+// console.log(headersTemp[0])
+if (headersTemp[0] !== "") {
+  headersTemp.forEach((header) => {
+    const headerTemp = header.split("=");
+    finalHeaders[headerTemp[0].trim()] = headerTemp[1].trim(); // save on object to access using keys.
+  });
+}
 
 export async function getTurnover() {
-  const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
   try {
     const turnover = await axios.post(

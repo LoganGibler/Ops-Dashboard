@@ -11,11 +11,23 @@ import {
   Alerts,
   Contacts,
   Workflows,
+  Guide,
+  CreateGuide,
+  UserGuides,
 } from "./components";
 import ProtectedRoute from "./routes/ProtectedRoute";
-// import Cookies from "universal-cookie";
+import { testingProtectedRoute } from "./middleware/auth";
 
-// const cookies = new Cookies();
+// grabs cookie for auth
+const headersTemp = document.cookie.split(";");
+const finalHeaders = {};
+// console.log(headersTemp[0])
+if (headersTemp[0] !== "") {
+  headersTemp.forEach((header) => {
+    const headerTemp = header.split("=");
+    finalHeaders[headerTemp[0].trim()] = headerTemp[1].trim(); // save on object to access using keys.
+  });
+}
 
 const App = () => {
   const [isActive, setIsActive] = useState(false);
@@ -23,13 +35,17 @@ const App = () => {
   const [activeSession, setActiveSession] = useState(false);
   const [activeUser, setActiveUser] = useState("");
 
-  async function fetchLoginStatus() {}
+  async function fetchLoginStatus() {
+    const sessionStatus = await testingProtectedRoute();
+    console.log(sessionStatus);
+    setActiveSession(sessionStatus);
+  }
 
   async function fetchUser() {
     const activeUser = JSON.parse(localStorage.getItem("username"));
     if (activeUser) {
       setActiveUser(activeUser);
-      setActiveSession(true);
+      // setActiveSession(true);
     }
   }
 
@@ -96,6 +112,14 @@ const App = () => {
           <Route
             path="/Workflows"
             element={<ProtectedRoute element={Workflows} />}
+          />
+          <Route
+            path="/guide/:id"
+            element={<ProtectedRoute element={Guide} />}
+          />
+          <Route
+            path="/createGuide"
+            element={<ProtectedRoute element={CreateGuide} />}
           />
         </Routes>
       </BrowserRouter>
