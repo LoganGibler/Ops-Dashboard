@@ -9,4 +9,5 @@ export { default as Contacts } from "./Contacts";
 export { default as Workflows } from "./Workflows";
 export { default as Guide } from "./Guide";
 export { default as CreateGuide } from "./CreateGuide";
-export {default as UserGuides} from "./UserGuides"
+export { default as UserGuides } from "./UserGuides";
+export { default as Editguide } from "./Editguide";

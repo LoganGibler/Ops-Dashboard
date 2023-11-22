@@ -196,3 +196,42 @@ export async function getUnpublishedUserGuides() {
     throw error;
   }
 }
+
+export async function getGuide(_id) {
+  try {
+    const response = await axios.post(
+      `${URL}/getGuide`,
+      {
+        _id: _id,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateTitle(_id, newData) {
+  try {
+    const response = await axios.post(
+      `${URL}/updateTitle`,
+      {
+        _id: _id,
+        newData: newData,
+      },
+      {
+        headers: {
+          authorization: finalHeaders["AUTH_API"],
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

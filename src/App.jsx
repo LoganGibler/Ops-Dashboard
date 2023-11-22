@@ -14,6 +14,7 @@ import {
   Guide,
   CreateGuide,
   UserGuides,
+  Editguide,
 } from "./components";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { testingProtectedRoute } from "./middleware/auth";
@@ -120,6 +121,10 @@ const App = () => {
           <Route
             path="/createGuide"
             element={<ProtectedRoute element={CreateGuide} />}
+          />
+          <Route
+            path="/editguide/:id"
+            element={<ProtectedRoute element={Editguide} />}
           />
         </Routes>
       </BrowserRouter>
