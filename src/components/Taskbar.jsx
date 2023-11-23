@@ -88,7 +88,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
           </p>
         )} */}
 
-        {activeComp === "Documentation" ? (
+        {/* {activeComp === "Documentation" ? (
           <p className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  bg-stone-50 hover:cursor-pointer text-green-500 active:bg-white">
             Documentation <MdEditDocument className="ml-2 text-2xl" />
           </p>
@@ -101,7 +101,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
           >
             Documentation <MdEditDocument className="ml-2 text-2xl" />
           </p>
-        )}
+        )} */}
         {activeComp === "Contacts" ? (
           <p className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center bg-stone-50 hover:cursor-pointer text-green-500 active:bg-white">
             Contacts <RiContactsBookFill className="ml-2 text-2xl" />
@@ -221,7 +221,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
           </p>
         )} */}
 
-        {activeComp === "Documentation" ? (
+        {/* {activeComp === "Documentation" ? (
           <p className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  bg-stone-50 hover:cursor-pointer text-green-500 active:bg-white">
             <MdEditDocument className="ml-0.5 text-2xl" />
           </p>
@@ -234,7 +234,7 @@ const Taskbar = ({ isActive, setIsActive, activeComp, setActiveComp }) => {
           >
             <MdEditDocument className="ml-0.5 text-2xl" />
           </p>
-        )}
+        )} */}
 
         {activeComp === "Contacts" ? (
           <p className="mx-0 my-0 py-4 font-medium text-md border-white border-t-2 flex justify-center  bg-stone-50 hover:cursor-pointer text-green-500 active:bg-white">

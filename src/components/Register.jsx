@@ -31,18 +31,19 @@ const Register = ({ activeSession, setActiveSession }) => {
             // console.log("this is username", username);
             // console.log("this is password", password)
             let user = await createUser(username, password);
-            console.log("this is user", user);
+            // console.log("this is user", user);
             if (user.user) {
               let token = await loginUser(username, password);
-              console.log(token);
+              // console.log(token);
 
-              localStorage.setItem("token", JSON.stringify(token.token));
+              // localStorage.setItem("token", JSON.stringify(token.token));
               localStorage.setItem("username", JSON.stringify(username));
               alert("Sign up successful");
               setActiveSession(true);
               setUsername("");
               setPassword("");
               navigate("/Turnover");
+              window.location.reload()
             } else {
               alert("Sign up failed. Please use another username.");
             }

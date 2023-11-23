@@ -2,15 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getGuide, unpublishGuide } from "../api/alertGuides";
 
+import { storage } from "../firebase.js";
+import {
+  ref,
+  uploadBytes,
+  listAll,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
+
 const Guide = () => {
   const user = JSON.parse(localStorage.getItem("username"));
   let stepCount = 0;
   const navigate = useNavigate();
-  // display guide title,createdby, publishdate, steps, screenshots.
   let _id = useParams();
   _id = _id.id;
+  const stepImagesRef = ref(storage, "/images/" + _id);
   // console.log(_id);
   const [guide, setGuide] = useState([]);
+  const [stepImages, setStepImages] = useState([]);
 
   async function fetchGuide(_id) {
     const fetchedGuide = await getGuide(_id);
@@ -20,6 +30,13 @@ const Guide = () => {
 
   useEffect(() => {
     fetchGuide(_id);
+    listAll(stepImagesRef).then((res) => {
+      res.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setStepImages((prev) => [...prev, url]);
+        });
+      });
+    });
   }, []);
 
   const steps = guide.steps;
@@ -52,11 +69,29 @@ const Guide = () => {
               }
 
               return (
-                <div className="flex p-1 my-5" key={index}>
-                  <p className="p-2 font-bold whitespace-nowrap">
-                    Step: {stepCount}
-                  </p>
-                  <p className="ml-5 whitespace-pre-line p-2 grow">{step}</p>
+                <div className="flex flex-col p-1 my-5" key={index}>
+                  <div className="flex">
+                    <p className="p-2 font-bold whitespace-nowrap">
+                      Step: {stepCount}
+                    </p>
+                    <p className="ml-5 whitespace-pre-line p-2 grow">{step}</p>
+                  </div>
+
+                  {stepImages
+                    ? stepImages.map((image, index1) => {
+                        let imageIndex = image.split("!")[1];
+                        if (imageIndex === index.toString()) {
+                          return (
+                            <a
+                              className="mt-5 flex justify-center"
+                              key={index1}
+                            >
+                              <img src={image} alt="Step Img" />
+                            </a>
+                          );
+                        }
+                      })
+                    : null}
                 </div>
               );
             })

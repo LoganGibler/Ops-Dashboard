@@ -38,6 +38,7 @@ const Navigation = ({
                 // await logout();
                 setActiveSession(false);
                 navigate("/Login");
+                // window.location.reload();
               }}
             >
               Sign Out

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const UserGuides = () => {
   const [userGuides, setUserGuides] = useState([]);
   const navigate = useNavigate();
+  let empty = []
 
   async function fetchUserGuides() {
     const userGuides1 = await getUnpublishedUserGuides();
@@ -15,6 +16,10 @@ const UserGuides = () => {
   useEffect(() => {
     fetchUserGuides();
   }, []);
+
+  if (userGuides[0]===undefined){
+    return;
+  }
 
   return (
     <div className="shadow-md p-3 mt-10">

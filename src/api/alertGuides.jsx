@@ -159,7 +159,7 @@ export async function removeStep(_id, index) {
 export async function updateStep(_id, index, newData) {
   try {
     const response = await axios.post(
-      `${URL}/removeStep`,
+      `${URL}/updateStep`,
       {
         _id: _id,
         index: index,

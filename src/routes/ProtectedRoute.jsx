@@ -18,7 +18,12 @@ function ProtectedRoute({ element: Component, ...rest }) {
 
   if (isAuthenticated === null) {
     // Loading state, you can render a loading spinner or message here
-    return <div className="flex justify-center">Bad Auth. Please log out to refresh your token.</div>;
+    // window.location.reload();
+    return (
+      <div className="flex justify-center">
+        Bad Auth. Please log out to refresh your token.
+      </div>
+    );
   } else {
     return isAuthenticated ? (
       <Component {...rest} />
