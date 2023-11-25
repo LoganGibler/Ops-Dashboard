@@ -54,9 +54,9 @@ const Guide = () => {
             {guide.username}
           </p>
         </div>
-        <p>{Guide.description}</p>
       </div>
-      <div className="">
+      <p className="p-2 m-2">{guide.description}</p>
+      <div className="pb-[10rem]">
         {steps
           ? steps.map((stepObj, index) => {
               let step = stepObj.step;
@@ -86,7 +86,11 @@ const Guide = () => {
                               className="mt-5 flex justify-center"
                               key={index1}
                             >
-                              <img src={image} alt="Step Img" />
+                              <img
+                                className="max-w-[80rem] max-h-[80rem]"
+                                src={image}
+                                alt="Step Img"
+                              />
                             </a>
                           );
                         }
@@ -99,7 +103,7 @@ const Guide = () => {
       </div>
 
       {guide.username === user && (
-        <div className="grow flex justify-end">
+        <div className="grow flex justify-end pb-[7rem]">
           <button
             className="border-2 border-green-500 rounded-md p-1.5 text-white bg-green-500 font-semibold hover:cursor-pointer"
             onClick={async () => {

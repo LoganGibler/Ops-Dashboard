@@ -38,7 +38,7 @@ const App = () => {
 
   async function fetchLoginStatus() {
     const sessionStatus = await testingProtectedRoute();
-    console.log(sessionStatus);
+    // console.log(sessionStatus);
     setActiveSession(sessionStatus);
   }
 
@@ -76,7 +76,7 @@ const App = () => {
 
         <Routes>
           {/* publicroutes */}
-          {activeUser && <Route path="/" element={<Login />} />}
+          {!activeUser && <Route path="/" element={<Login />} />}
           <Route
             path="/Login"
             element={

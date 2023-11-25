@@ -250,7 +250,7 @@ const Editguide = () => {
                               className="mt-5 flex justify-center"
                               key={index1}
                             >
-                              <img src={image} alt="Step Img" />
+                              <img className="max-w-[80rem] max-h-[80rem]" src={image} alt="Step Img" />
                             </a>
                           );
                         }

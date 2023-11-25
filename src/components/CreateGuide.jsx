@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MdCloudUpload } from "react-icons/md";
 import { createGuide } from "../api/alertGuides";
 import { useNavigate } from "react-router-dom";
+import { FiAlertCircle } from "react-icons/fi";
 
 const CreateGuide = () => {
   const navigate = useNavigate();
@@ -65,8 +66,9 @@ const CreateGuide = () => {
             Submit <MdCloudUpload className="ml-1.5 mt-0 text-2xl" />
           </button>
         </div>
-        <p className="text-center text-sm mt-5">
-          Guides created here will be hidden until published by the author.
+        <p className="text-sm mt-5 flex justify-center pb-1">
+          <FiAlertCircle className="text-lg text-green-500 mr-1" /> Guides created
+          here will be hidden until published by the author.
         </p>
       </form>
     </div>
